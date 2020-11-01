@@ -48,8 +48,6 @@ class Edit_note extends Component {
         this.uri = this.note[0].uri;
         this.images_uri_array = this.note[0].images_uri;
         this.setState({content: this.note[0].content});
-        console.log("ULTIMO URI DEL NOTE:" + this.uri);
-        console.log("ARRAY DE URI DEL NOTE:" + this.images_uri_array);
     }
 
     save_changes = async() => {
@@ -71,9 +69,6 @@ class Edit_note extends Component {
                 return {...note}
             });
             
-            console.log("ULTIMO URI DEL NOTE ACTUALIZADO:" + this.uri);
-            console.log("ARRAY DE URI DEL NOTE ACTUALIZADO:" + this.images_uri_array);
-            console.log("NOTE ACTUALIZADO:");
             for (i = 0 ; i < edited_note.length ; i++) {
                 console.log(edited_note[i]);
             }
