@@ -26,11 +26,11 @@ class Search extends Component {
             if (params.data.screen === "Shum Note") {
                 (data.array_notes != undefined) ? 
                 this.setState({array_notes: data.array_notes}) 
-                : this.setState({array_notes: []}, () => console.log(this.state.array_notes));
+                : this.setState({array_notes: []});
             }else {
                 (data.archived_notes != undefined) ? 
                 this.setState({array_notes: data.archived_notes}) 
-                : this.setState({array_notes: []}, () => console.log(this.state.array_notes));
+                : this.setState({array_notes: []});
             }
         }else {
             data();
