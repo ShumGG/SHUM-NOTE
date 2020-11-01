@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Dimensions, StyleSheet, Text, View} from "react-native";
+import {Dimensions, StyleSheet, Text} from "react-native";
 import AsyncStorage from "@react-native-community/async-storage";
 import {actions, RichEditor, RichToolbar} from "react-native-pell-rich-editor";
 import {MaterialIcons} from '@expo/vector-icons'; 
@@ -217,7 +217,7 @@ class Edit_note extends Component {
                             initialContentHTML = {this.state.content}
                             editorInitializedCallback = {this.load}
                             useContainer = {true}
-                            onChange = {text => this.setState({content: text}, () => console.log(this.state.content))}>
+                            onChange = {text => this.setState({content: text})}>
                         </RichEditor>
                     </ScrollView>
                 )}

@@ -178,7 +178,7 @@ class Create_note extends Component {
                                 contentCSSText: "font-size: 30px;",
                             }}
                             ref = {this.richText}
-                            onChange = {text => this.setState({content: text}, () => console.log(this.state.content))}
+                            onChange = {text => this.setState({content: text})}
                             allowFileAccess = {true}>
                         </RichEditor>
                     </ScrollView>    
