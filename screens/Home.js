@@ -11,7 +11,7 @@ class Home extends Component {
     componentDidMount() {    
         this.props.navigation.addListener("didFocus", () => this.fetch_notes());
     }   
-    
+
     fetch_notes = async() => {                  //fetch all the data
         const data = await fetch_notes();
         if (typeof data != "function") {
@@ -22,7 +22,7 @@ class Home extends Component {
     }
 
     render() {
-        
+
         const props = {
             screen: "home",
             array_notes: this.state.array_notes,
