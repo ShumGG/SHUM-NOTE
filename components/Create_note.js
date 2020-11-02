@@ -20,7 +20,7 @@ class Create_note extends Component {
         change_color: false,
         modal: false,
     }
-
+    
     richText = React.createRef();
     option_icon = {
         size: RFValue(30, Math.round(Dimensions.get("window").height)),
@@ -95,7 +95,6 @@ class Create_note extends Component {
     }
     
     insertImage = async () => {
-        
         const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
     
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -116,7 +115,7 @@ class Create_note extends Component {
     }
     
     change_color = async () => {  
-       this.setState((prevState) => ({change_color: !prevState.change_color}));
+        this.setState((prevState) => ({change_color: !prevState.change_color}));
     }
 
     update_color = (color) => {
@@ -178,8 +177,9 @@ class Create_note extends Component {
                                 contentCSSText: "font-size: 30px;",
                             }}
                             ref = {this.richText}
-                            onChange = {text => this.setState({content: text})}
-                            allowFileAccess = {true}>
+                            onChange = {text => this.setState({content:text})}
+                            allowFileAccess = {true}
+                            >
                         </RichEditor>
                     </ScrollView>    
                 )}
@@ -192,8 +192,8 @@ class Create_note extends Component {
             <AppContext.Consumer>
                 {({styles: {backgroundColor}}) => (
                     <RichToolbar
+                        
                         editor = {this.richText}
-                        onPressAddImage = {this.insertImage}
                         actions = {[
                             actions.insertBulletsList,
                             actions.insertOrderedList,

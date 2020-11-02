@@ -39,15 +39,16 @@ class Edit_note extends Component {
     images_uri_array = "";
     
     componentDidMount() {
+        this.mounted = true;
         this.props.navigation.setParams({save_changes: this.save_changes});
         const {params} = this.props.navigation.state;
         this.array_notes = params.data.array_notes;
         this.note = params.data.selected_note;
-        this.text_color = this.note[0].text_color;
-        this.background = this.note[0].color;
-        this.uri = this.note[0].uri;
-        this.images_uri_array = this.note[0].images_uri;
-        this.setState({content: this.note[0].content});
+        this.text_color = params.data.selected_note[0].text_color;
+        this.background = params.data.selected_note[0].color;
+        this.uri = params.data.selected_note[0].uri;
+        this.images_uri_array = params.data.selected_note[0].images_uri;
+        this.setState({content: params.data.selected_note[0].content});
     }
 
     save_changes = async() => {
@@ -68,11 +69,7 @@ class Edit_note extends Component {
                 note.uri = this.uri;
                 return {...note}
             });
-            
-            for (i = 0 ; i < edited_note.length ; i++) {
-                console.log(edited_note[i]);
-            }
-            
+        
             this.array_notes.splice(index_to_find, 1, edited_note[0]);
             data.array_notes = this.array_notes;
             await AsyncStorage.setItem("data", JSON.stringify(data));
@@ -188,6 +185,7 @@ class Edit_note extends Component {
             return (this.background != "white") ? this.background : backgroundColor;
         }
     }
+    
     render() {
     
         const props = {
@@ -215,7 +213,6 @@ class Edit_note extends Component {
                             allowFileAccess = {true}
                             scrollEnabled = {false}
                             initialContentHTML = {this.state.content}
-                            editorInitializedCallback = {this.load}
                             useContainer = {true}
                             onChange = {text => this.setState({content: text})}>
                         </RichEditor>

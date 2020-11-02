@@ -9,14 +9,14 @@ import {AppContext} from "../context/AppProvider";
 import { MaterialIcons } from '@expo/vector-icons'; 
 
 class Notes extends Component {
-    
+
     state = {
         onpress: false,
         array_notes: [],
         selected_notes: [],
         update: false,
     }
-
+    
     note = "";
     note_index = "";
     note_number = "";
@@ -55,7 +55,7 @@ class Notes extends Component {
             this.props.array_notes.splice(this.note_index, 1, this.note);
             selected_note.push(this.note);
             this.item_selected = this.item_selected + 1;
-            this.setState({array_notes: this.props.array_notes, selected_notes: selected_note}); 
+            this.setState({array_notes: this.props.array_notes, selected_notes: selected_note});
        
         }else {
      
@@ -70,8 +70,8 @@ class Notes extends Component {
             if (this.item_selected === 0) {
                 this.open_popmenu = !this.open_popmenu; //if theres at least one item selected, the menu still visible
             }                   
-       
-            this.setState({array_notes: this.props.array_notes, selected_notes: deselected_note}), () => console.log(`${this.state.selected_notes}`); //set the new arrays*/
+    
+            this.setState({array_notes: this.props.array_notes, selected_notes: deselected_note}); //set the new arrays*/
         }
     }
 
@@ -109,7 +109,7 @@ class Notes extends Component {
         return (
             <>
             <AppContext.Consumer>
-            {({state: {dark}, styles: {backgroundColor, notes_backgroundColor, color, fontColor}}) => (
+            {({state: {dark}, styles: {backgroundColor, notes_backgroundColor, color}}) => (
                 <View style = {this.styles.container(backgroundColor)}>
                     {this.open_popmenu ? 
                         <View  style = {this.styles.selected_container}>    
