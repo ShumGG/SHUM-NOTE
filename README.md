@@ -12,7 +12,7 @@ This is my third personal project, made this little app, it has the basic functi
 
 #
 
-## BASIC FEATURES:
+## BASIC FUNCTIONS:
 
 ### 
 
