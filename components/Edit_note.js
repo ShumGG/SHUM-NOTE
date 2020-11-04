@@ -20,6 +20,7 @@ class Edit_note extends Component {
         editable: false,
         load: false,
         modal: false,
+        content_load: "",
     }
 
     richText = React.createRef();
@@ -214,6 +215,7 @@ class Edit_note extends Component {
                             scrollEnabled = {false}
                             initialContentHTML = {this.state.content}
                             useContainer = {true}
+                            editorInitializedCallback = {this.load}
                             onChange = {text => this.setState({content: text})}>
                         </RichEditor>
                     </ScrollView>
