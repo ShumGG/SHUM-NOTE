@@ -101,25 +101,23 @@ class Create_note extends Component {
 
         if (status != "granted") {
             return;
-        } else {
-            let result = await ImagePicker.launchImageLibraryAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.All,
-                allowsEditing: false,
-                quality: 1
-            });
-            if (!result.cancelled) {
-            
-                let uri = result.uri;
-                let clear_content = uri.replace("file:/","file:///"); //replace al &nbsp;
-                this.uri = clear_content;
-                this.images_uri.push(this.uri);
-                this.richText.current?.insertImage(clear_content);
-            
-            }else {
-                return;
-            }
         }
-    
+        
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: false,
+            quality: 1
+        });
+        
+        if (!result.cancelled) {
+            let uri = result.uri;
+            let clear_content = uri.replace("file:/","file:///"); //replace al &nbsp;
+            this.uri = clear_content;
+            this.images_uri.push(this.uri);
+            this.richText.current?.insertImage(clear_content);
+        }else {
+            return;
+        }
     }
     
     change_color = async () => {  
