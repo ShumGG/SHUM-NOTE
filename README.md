@@ -70,4 +70,4 @@ This is my third personal project, made this little app, it has the basic functi
  
 ##
 
- ### Download :point_right: https://anonfiles.com/LeyfE9m9pe/Shum-Note_apk :point_left:
+ ### Download apk: :point_right: https://anonfiles.com/LeyfE9m9pe/Shum-Note_apk :point_left:
