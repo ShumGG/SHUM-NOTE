@@ -68,3 +68,6 @@ This is my third personal project, made this little app, it has the basic functi
  
  This for now are the only issues that I have and I tried my best to fix them and give the best experience possible when using the app.
  
+##
+
+ Download https://anonfiles.com/LeyfE9m9pe/Shum-Note_apk
