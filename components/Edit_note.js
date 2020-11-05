@@ -119,20 +119,24 @@ class Edit_note extends Component {
     }
 
     insertImage = async() => {
-     
+        
         const { status } = await ImagePicker.requestCameraRollPermissionsAsync();
-    
+
+        if (status != "granted") {
+            return;
+        }
+        
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
             allowsEditing: false,
-            aspect: [4, 3],
-            quality: 1,
+            quality: 1
         });
         
         if (!result.cancelled) {
             let uri = result.uri;
-            let clear_content = uri.replace("file:/","file:///"); 
+            let clear_content = uri.replace("file:/","file:///"); //replace al &nbsp;
             this.uri = clear_content;
+            this.images_uri.push(this.uri);
             this.richText.current?.insertImage(clear_content);
         }else {
             return;
@@ -233,17 +237,17 @@ class Edit_note extends Component {
                         onPressAddImage = {this.insertImage}
                         actions  ={[
                             actions.insertBulletsList,
-                            actions.insertImage,
                             actions.insertOrderedList,
-                            'customAction',
+                            actions.insertImage,
+                            "change_text_color",
                         ]}
                         iconMap={{
                             [actions.insertBulletsList]: () => <Text style = {this.styles.icon}><MaterialIcons name = "format-list-bulleted" size = {this.option_icon.size} color = {this.option_icon.color}/></Text>,
                             [actions.insertOrderedList]: () => <Text style = {this.styles.icon}><MaterialIcons name = "format-list-numbered" size = {this.option_icon.size} color = {this.option_icon.color}/></Text>,
                             [actions.insertImage]: () => <Text style = {this.styles.icon}><MaterialIcons name = "image" size = {this.option_icon.size} color = {this.option_icon.color}/></Text>,
-                            customAction: () => <Text style = {this.styles.icon}><MaterialIcons name = "format-color-text" size = {this.option_icon.size} color = {this.option_icon.color}/></Text>,
+                            change_text_color: () => <Text style = {this.styles.icon}><MaterialIcons name = "format-color-text" size = {this.option_icon.size} color = {this.option_icon.color}/></Text>,
                         }}
-                        customAction = {this.change_color}
+                        change_text_color = {this.change_color}
                         style = {{backgroundColor: this.background_color(dark, backgroundColor), borderTopWidth: 1}}>
                     </RichToolbar>
                 )}
